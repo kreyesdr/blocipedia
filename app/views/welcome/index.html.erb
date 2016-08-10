@@ -1,34 +1,27 @@
-<br>
-<div class="jumbotron">
-  <div class="container">
-    <div class="row">
-      <div class="col-md-12">
-        <p class="pull-right">
-          <%= link_to 'Sign In', '' %>
-        </p>
+<h3 class="text-center">Blocipedia: Social, Markdown, Wikis</h3>
+<div class="container text-center">
+  <div class="row">
+    <div class="col-md-12">
+      <div class="border-radius">
+        <p>Create and share Markdown Wikis</p>
+        <% if user_signed_in? %>
+            Signed in as: <strong><%= current_user.email %></strong> |
+            <%= link_to 'Edit profile', edit_registration_path, :class => 'navbar-link' %> - <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+        <% else %>
+            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
+      <% end %>
       </div>
     </div>
   </div>
-  <h3 class="text-center">Blocipedia: Social, Markdown, Wikis</h3>
-  <div class="container text-center">
+  <div class="container m-t">
     <div class="row">
-      <div class="col-md-12">
-        <div class="border-radius">
-          <p>Create and share Markdown Wikis</p>
-          <%= link_to 'Sign Up', '', class: 'btn btn-primary' %>
-        </div>
+      <div class="col-md-6">
+        <div class="btn btn-success">FREE</div>
+        <p>Create as many public wikis as you want!</p>
       </div>
-    </div>
-    <div class="container m-t">
-      <div class="row">
-        <div class="col-md-6">
-          <div class="btn btn-success">FREE</div>
-          <p>Create as many public wikis as you want!</p>
-        </div>
-        <div class="col-md-6">
-          <div class="btn btn-success">PREMIUM</div>
-          <p>Create private wikis!</p>
-        </div>
+      <div class="col-md-6">
+        <div class="btn btn-success">PREMIUM</div>
+        <p>Create private wikis!</p>
       </div>
     </div>
   </div>
