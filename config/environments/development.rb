@@ -3,6 +3,8 @@ Rails.application.configure do
 
   #Devise Config
   config.action_mailer.default_url_options = { host: 'localhost', port: 3000 }
+  config.action_mailer.delivery_method = :smtp
+  config.action_mailer.perform_deliveries = true
 
   # In the development environment your application's code is reloaded on
   # every request. This slows down response time but is perfect for development
