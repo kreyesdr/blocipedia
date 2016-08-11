@@ -45,3 +45,9 @@ group :development do
   gem 'spring'
 end
 
+#Project project gems
+gem 'bootstrap-sass', '~> 3.3.6'
+gem 'autoprefixer-rails'
+gem 'devise'
+
+
