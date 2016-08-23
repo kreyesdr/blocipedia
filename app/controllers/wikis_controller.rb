@@ -13,8 +13,11 @@ class WikisController < ApplicationController
 
   def create
     @wiki = Wiki.new
+    authorize @wiki, :create?
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
+    @wiki.user_id = current_user.id
 
     if @wiki.save
       flash[:notice] = 'Wiki saved successfully.'
@@ -32,12 +35,14 @@ class WikisController < ApplicationController
 
   def update
     @wiki = Wiki.find(params[:id])
+    authorize @wiki, :update?
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
+    @wiki.private = params[:wiki][:private]
 
     if @wiki.save
       flash[:notice] = 'Wiki updated successfully'
-      redirect_to @wiki
+      redirect_to wikis_path
     else
       flash.now[:alert] = 'There was an error updating this wiki. Try again later or contact support'
     end

@@ -16,7 +16,7 @@
 
       <p>
         <% if user_signed_in? %>
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'pull-right navbar-link' %>
+            <p class="pull-right">Signed in as: <strong><%= current_user.email %></strong>&nbsp;<%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'pull-right navbar-link' %></p>
         <% else %>
             <%= link_to 'Sign In', new_user_session_path, :class => 'navbar-link pull-right' %>
         <% end %>
