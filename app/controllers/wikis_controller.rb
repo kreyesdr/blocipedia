@@ -1,4 +1,5 @@
 class WikisController < ApplicationController
+
   def index
     @wiki = Wiki.all
   end
@@ -17,7 +18,6 @@ class WikisController < ApplicationController
     @wiki.title = params[:wiki][:title]
     @wiki.body = params[:wiki][:body]
     @wiki.private = params[:wiki][:private]
-    @wiki.user_id = current_user.id
 
     if @wiki.save
       flash[:notice] = 'Wiki saved successfully.'

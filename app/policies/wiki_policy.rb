@@ -11,11 +11,15 @@ class WikiPolicy
     user.present?
   end
 
-  def owner
-    wiki.user_id == user.id
+  def admin?
+    user.admin? or wiki.private? == true
+  end
+
+  def owner?
+
   end
 
   def update?
-    user.admin? or owner or wiki.private? == false or user.present?
+    user.present? or admin? and wiki.private? == false
   end
 end
