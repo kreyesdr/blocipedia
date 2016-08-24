@@ -12,7 +12,7 @@ class WikiPolicy
   end
 
   def admin?
-    user.admin? or wiki.private? == true
+    user.admin?
   end
 
   def owner?
