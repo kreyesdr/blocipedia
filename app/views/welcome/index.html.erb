@@ -2,7 +2,6 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-md-12">
-      <div class="border-radius">
         <p>Create and share Markdown Wikis</p>
         <% if user_signed_in? %>
             Signed in as: <strong><%= current_user.email %></strong>
@@ -10,7 +9,6 @@
         <% else %>
             <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
         <% end %>
-      </div>
     </div>
   </div>
   <div class="container m-t">

@@ -16,10 +16,10 @@ class WikiPolicy
   end
 
   def owner?
-
+    wiki.user == user
   end
 
   def update?
-    user.present? or admin? and wiki.private? == false
+    (user.present? && !wiki.private?) || (owner? && wiki.private?) || admin?
   end
 end

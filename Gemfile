@@ -52,4 +52,5 @@ gem 'bootstrap-sass', '~> 3.3.6'
 gem 'autoprefixer-rails'
 gem 'devise'
 gem 'pundit'
-
+gem 'stripe'
+gem 'figaro', '1.0'
