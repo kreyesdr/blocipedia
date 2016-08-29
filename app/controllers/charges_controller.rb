@@ -1,5 +1,11 @@
 class ChargesController < ApplicationController
 
+  class Amount
+    def self.default
+      5_00
+    end
+  end
+
   def create
     customer = Stripe::Customer.create(
         email: current_user.email,
@@ -27,11 +33,5 @@ class ChargesController < ApplicationController
         description: "BigMoney Membership - #{current_user.email}",
         amount: Amount.default
     }
-  end
-
-  class Amount
-    def self.default
-      5_00
-    end
   end
 end
