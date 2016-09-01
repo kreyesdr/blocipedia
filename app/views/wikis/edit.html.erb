@@ -20,13 +20,15 @@
             <%= item.label :body %>
             <%= item.text_area :body, class: 'form-control', placeholder: 'Enter wiki body' %>
           </div>
-
-          <div class="form-group">
-            <%= item.label :private, class: 'checkbox' do %>
-                <%= item.check_box :private %> Private topic
-            <% end %>
-          </div>
-
+          <% if current_user.subscribed? %>
+              <div class="form-group">
+                <%= item.label :private, class: 'checkbox' do %>
+                    <%= item.check_box :private %> Private topic
+                <% end %>
+              </div>
+          <% else %>
+              <%= item.check_box :private, disabled: true %> Private topic
+          <% end %>
           <div class="form-group">
             <%= item.submit 'Save', class: 'btn btn-success' %>
           </div>
