@@ -2,28 +2,38 @@
 <div class="container text-center">
   <div class="row">
     <div class="col-md-12">
-        <p>Create and share Markdown Wikis</p>
-        <% if user_signed_in? %>
-            Signed in as: <strong><%= current_user.email %></strong>
-            <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
-        <% else %>
-            <%= link_to 'Sign up', new_user_registration_path, class: 'btn btn-primary' %>
-        <% end %>
+      <p>Create and share Markdown Wikis</p>
+      <% if user_signed_in? %>
+          Signed in as: <strong><%= current_user.email %></strong>
+          <%= link_to 'Sign Out', destroy_user_session_path, method: :delete, :class => 'navbar-link' %>
+      <% end %>
     </div>
   </div>
   <div class="container m-t">
     <div class="row">
-      <% if user_signed_in? %>
+      <% if user_signed_in? && !current_user.subscribed? %>
           <div class="col-md-12 text-center">
             <%= link_to 'View Wikis', wikis_path, class: 'btn btn-primary' %>
           </div>
+          <div class="col-md-12 text-center m-t">
+            <%= link_to 'Upgrade to Premium!', new_charge_path, class: 'btn btn-success' %>
+            <p>Create private wikis!</p>
+          </div>
+      <% elsif user_signed_in? && current_user.subscribed? %>
+          <div class="col-md-12 text-center">
+            <%= link_to 'View Wikis', wikis_path, class: 'btn btn-primary' %>
+          </div>
+          <div class="col-md-12 text-center m-t">
+            <%= link_to 'Downgrade to Standard', new_user_registration_path, class: 'btn btn-success' %>
+            <p>Create private wikis!</p>
+          </div>
       <% else %>
           <div class="col-md-6">
-            <div class="btn btn-success">FREE</div>
+            <%= link_to 'Free Plan', new_user_registration_path, class: 'btn btn-primary' %>
             <p>Create as many public wikis as you want!</p>
           </div>
           <div class="col-md-6">
-            <div class="btn btn-success">PREMIUM</div>
+            <%= link_to 'Premium Plan', new_user_registration_path, class: 'btn btn-success' %>
             <p>Create private wikis!</p>
           </div>
       <% end %>
