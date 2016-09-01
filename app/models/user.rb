@@ -7,6 +7,7 @@ class User < ActiveRecord::Base
   has_many :wiki
 
   before_save { self.role ||= :standard }
+  before_save { self.subscribed ||= 0 }
 
   enum role: [:standard, :premium, :admin]
 
