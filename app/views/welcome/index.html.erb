@@ -24,7 +24,7 @@
             <%= link_to 'View Wikis', wikis_path, class: 'btn btn-primary' %>
           </div>
           <div class="col-md-12 text-center m-t">
-            <%= link_to 'Downgrade to Standard', new_user_registration_path, class: 'btn btn-success' %>
+            <%= link_to 'Downgrade to Standard', subscriptions_destroy_path, class: 'btn btn-success', :data => {:confirm => "You won't be able to create private wikis anymore. Are you sure you wan't to downgrade?"} %>
             <p>Create private wikis!</p>
           </div>
       <% else %>
