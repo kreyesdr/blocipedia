@@ -33,6 +33,17 @@
             <%= item.submit 'Save', class: 'btn btn-success' %>
           </div>
       <% end %>
+      <div class="form-group">
+        <p>Collaborators</p>
+        <% collaborator = @wiki.collaborators %>
+        <% User.all.each do |user| %>
+            <div class="user">
+              <%= check_box_tag :collaborators_users, user.id, collaborator.include?(user.id) %>
+              <%= user.username %>
+            </div>
+        <% end %>
+      </div>
+      <%= render partial: 'collaborators/form' %>
     </div>
   </div>
 </div>
