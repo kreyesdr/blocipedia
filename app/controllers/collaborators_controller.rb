@@ -8,7 +8,7 @@ class CollaboratorsController < ApplicationController
     if @user
       @collaborator = Collaborator.new(wiki: @wiki, user: @user)
       if @collaborator.save
-        flash[:notice] = 'User successfully added to wiki.'
+        flash[:notice] = 'User collaborator successfully added to wiki.'
       else
         flash[:error] = 'There was a problem adding user. Please try again.'
       end
@@ -20,7 +20,7 @@ class CollaboratorsController < ApplicationController
 
 
   def destroy
-    @wiki = Wiki.friendly.find(params[:wiki_id])
+    @wiki = Wiki.find(params[:wiki_id])
     @collaborator = Collaborator.find(params[:id])
 
     if @collaborator.destroy

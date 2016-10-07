@@ -19,8 +19,17 @@ class WikiPolicy
     wiki.user == user
   end
 
+
   def update?
     (user.present? && wiki.private?) || (owner? && wiki.private?) || admin?
+  end
+
+  def destroy?
+    update?
+  end
+
+  def edit?
+    update?
   end
 
   class Scope
