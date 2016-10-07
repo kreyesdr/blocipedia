@@ -12,10 +12,18 @@
       <% @wiki.each do |item| %>
           <td><%= link_to item.title, wiki_path(item) %></td>
       <td>
-        <%= link_to 'Edit', edit_wiki_path(item), class: 'btn btn-success' %>
+        <% if policy(item).edit? %>
+            <%= link_to 'Edit', edit_wiki_path(item), class: 'btn btn-success' %>
+       <% else %>
+            <p>No access</p>
+        <% end %>
       </td>
       <td>
-        <%= link_to 'Delete Wiki', item, method: :delete, class: 'btn btn-danger' %>
+        <% if policy(item).destroy? %>
+            <%= link_to 'Delete Wiki', item, method: :delete, class: 'btn btn-danger' %>
+        <% else %>
+            <p>No access</p>
+        <% end %>
       </td>
     </tr>
       <% end %>

@@ -10,7 +10,7 @@ admin_user = User.create!(
     password_confirmation: 'AAbb11',
     role: 'admin'
 )
-admin_user.skip_confirmation!
+# admin_user.skip_confirmation!
 admin_user.save!
 
 # Create a Premium User
@@ -21,7 +21,7 @@ premium_user = User.create!(
     password_confirmation: 'AAbb11',
     role: 'premium'
 )
-premium_user.skip_confirmation!
+# premium_user.skip_confirmation!
 premium_user.save!
 
 
@@ -33,7 +33,7 @@ standard_user = User.create!(
     password_confirmation: 'AAbb11',
     role: 'standard'
 )
-standard_user.skip_confirmation!
+# standard_user.skip_confirmation!
 standard_user.save!
 
 users = User.all
